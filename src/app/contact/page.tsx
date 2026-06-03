@@ -36,12 +36,10 @@ export default function ContactPage() {
       });
       setSuccess(true);
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    } catch (err: any) {
+  console.error("Firebase error:", err);
+  setError(err?.message || JSON.stringify(err));
+}
   };
 
   return (
